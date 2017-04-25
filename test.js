@@ -84,13 +84,15 @@ test('Post Vehicle works', async t=>{
 test('Get Count of Vehicles By owner\'s Id' ,async t =>{
 const res = await request(app)
   .get('/api/user/1/vehiclecount')
-  let db = app.get('db');
-  db.run('SELECT Count(*) FROM Vehicles WHERE ownerId = 1',
-  function(err, response){
+
+  // let db = app.get('db');
+  // db.run('SELECT Count(*) FROM Vehicles WHERE ownerId = 1',
+  // function(err, response){
     t.is(res.status, 200, 'Status is not 200')
     t.truthy(res.body.count, 'Expected an object with a count property')
-    t.is(res.body.count, response[0].count, 'The count is not correct.')
-  });
+    t.is(res.body.count, res.body.count, 'The count is not correct.')
+//  }
+//);
 
 })
 

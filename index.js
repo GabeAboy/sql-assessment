@@ -66,7 +66,7 @@ app.get('/api/user/:userId/vehiclecount',function(req,res) {
       var n = Number(response[0].count)
       var obj = {count:n}
       console.log('Answer',obj);
-        res.status(200).send();
+        res.status(200).json(obj);
       }
       else res.status(422).send(err);
   })
