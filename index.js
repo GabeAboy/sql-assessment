@@ -62,10 +62,11 @@ app.post('/api/vehicles',function(req,res) {
 app.get('/api/user/:userId/vehiclecount',function(req,res) {
   var x = Number(req.params.userId)
   db.vehicleCount([req.params.userId],function (err,response) {
-
     if(!err){
       var n = Number(response[0].count)
-        res.status(200).send({count:n});
+      var obj = {count:n}
+      console.log('Answer',obj);
+        res.status(200).send();
       }
       else res.status(422).send(err);
   })
@@ -89,11 +90,11 @@ app.get('/api/vehicle/',function(req,res) {
 			}
 		})
 	} else if (req.query.userFirstStart) {
-    console.log(req.query);
+
 		var queryString = req.query.userFirstStart + "%";
-    console.log(queryString);
+
 		db.vehicleByName([queryString], function(err, vehicles) {
-      console.log(err);
+
 			if (!err) {
 				res.status(200).send(vehicles);
 			} else {
@@ -114,7 +115,7 @@ app.get('/api/newervehiclesbyyear',function(req,res) {
   }
 })
 })
-app.get('/api/vehicle/:vehicleId/user/:userId',function(req,res) {
+app.put('/api/vehicle/:vehicleId/user/:userId',function(req,res) {
   db.updateVehicle_owner([parseInt(req.params.userId),parseInt(req.params.vehicleId)], function(err, vehicle) {
 		if (!err) {
 			res.status(200).send();
