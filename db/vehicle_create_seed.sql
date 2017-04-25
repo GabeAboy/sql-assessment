@@ -1,6 +1,6 @@
 -- It may be helpful to drop and reinstantilize the table when doing
 -- the tests in case you delete users/cars the tests are expecting to see
-DROP TABLE IF EXISTS Vehicles;
+DROP TABLE IF EXISTS Vehicles CASCADE;
 DROP SEQUENCE IF EXISTS vehicle_pk;
 CREATE SEQUENCE public.vehicle_pk
   INCREMENT 1

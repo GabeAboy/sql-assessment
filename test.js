@@ -85,7 +85,7 @@ test('Get Count of Vehicles By owner\'s Id' ,async t =>{
 const res = await request(app)
   .get('/api/user/1/vehiclecount')
   let db = app.get('db');
-  db.run('SELECT Count(*) FROM vehicles WHERE ownerId = 1',
+  db.run('SELECT Count(*) FROM Vehicles WHERE ownerId = 1',
   function(err, response){
     t.is(res.status, 200, 'Status is not 200')
     t.truthy(res.body.count, 'Expected an object with a count property')
